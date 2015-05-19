@@ -1,0 +1,34 @@
+{
+    "name": "wayhood/yii2-setting",
+    "description": "Yii2 Database settings",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "config",
+        "setting",
+        "settings"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "netyum",
+            "email": "netyum@163.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "pheme/yii2-toggle-column": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "wh\\setting\\": ""
+        }
+    },
+    "extra": {
+        "bootstrap": "wh\\setting\\Bootstrap",
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}

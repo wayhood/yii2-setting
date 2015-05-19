@@ -1,6 +1,6 @@
 {
     "name": "wayhood/yii2-setting",
-    "description": "Yii2 Database settings",
+    "description": "Yii2 Database setting",
     "type": "yii2-extension",
     "keywords": [
         "yii2",

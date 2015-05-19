@@ -7,33 +7,31 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use pheme\settings\Module;
-use pheme\settings\models\Setting;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Pjax;
+use wh\setting\models\Setting;
 
 /**
  * @var yii\web\View $this
- * @var pheme\settings\models\SettingSearch $searchModel
  * @var yii\data\ActiveDataProvider $dataProvider
  */
 
-$this->title = Module::t('settings', 'Settings');
+$this->title = Yii::t('setting', 'Setting');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="setting-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?=
         Html::a(
-            Module::t(
-                'settings',
+            Yii::t(
+                'setting',
                 'Create {modelClass}',
                 [
-                    'modelClass' => Module::t('settings', 'Setting'),
+                    'modelClass' => Yii::t('setting', 'Setting'),
                 ]
             ),
             ['create'],

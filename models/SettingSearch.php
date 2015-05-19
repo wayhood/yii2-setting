@@ -12,7 +12,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * SettingSearch represents the model behind the search form about `pheme\settings\models\Setting`.
+ * SettingSearch represents the model behind the search form about `wh\setting\models\Setting`.
  *
  * @author Aris Karageorgos <aris@phe.me>
  */
@@ -26,7 +26,7 @@ class SettingSearch extends Setting
         return [
             [['id'], 'integer'],
             [['active'], 'boolean'],
-            [['type', 'section', 'key', 'value', 'created', 'modified'], 'safe'],
+            [['type', 'section', 'key', 'value', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 

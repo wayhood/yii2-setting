@@ -14,6 +14,7 @@ class Module extends \yii\base\Module
      */
     public $controllerNamespace = 'wh\setting\controllers';
 
+    public $componentId = 'setting';
     /**
      * Init module
      */
@@ -22,4 +23,12 @@ class Module extends \yii\base\Module
         parent::init();
     }
 
+    public function getComponent()
+    {
+        if (Yii::$app->has($this->componentId)) {
+            return Yii::$app->get($this->componentId);
+        } else {
+            return null;
+        }
+    }
 }

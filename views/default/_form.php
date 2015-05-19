@@ -7,11 +7,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use pheme\settings\Module;
 
 /**
  * @var yii\web\View $this
- * @var pheme\settings\models\Setting $model
  * @var yii\widgets\ActiveForm $form
  */
 ?>
@@ -39,13 +37,13 @@ use pheme\settings\Module;
             'object' => 'object',
             'null' => 'null'
         ]
-    )->hint(Module::t('settings', 'Change at your own risk')) ?>
+    )->hint(Yii::t('setting', 'Change at your own risk')) ?>
 
     <div class="form-group">
         <?=
         Html::submitButton(
-            $model->isNewRecord ? Module::t('settings', 'Create') :
-                Module::t('settings', 'Update'),
+            $model->isNewRecord ? Yii::t('setting', 'Create') :
+                Yii::t('setting', 'Update'),
             [
                 'class' => $model->isNewRecord ?
                     'btn btn-success' : 'btn btn-primary'

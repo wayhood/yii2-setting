@@ -1,20 +1,19 @@
 <?php
 /**
- * @link http://phe.me
- * @copyright Copyright (c) 2014 Pheme
- * @license MIT http://opensource.org/licenses/MIT
+ * @link http://www.wayhood.com/
  */
 
-namespace wy\setting\models;
+namespace wh\setting\models;
 
+use wh\setting\Module;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
-use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use Yii;
+use wh\setting\Moduel;
 
 /**
- * This is the model class for table "settings".
+ * This is the model class for table "setting".
  *
  * @property integer $id
  * @property string $type
@@ -24,8 +23,6 @@ use Yii;
  * @property boolean $active
  * @property string $created
  * @property string $modified
- *
- * @author Aris Karageorgos <aris@phe.me>
  */
 class Setting extends ActiveRecord implements SettingInterface
 {
@@ -57,7 +54,7 @@ class Setting extends ActiveRecord implements SettingInterface
         return [
             [['value'], 'string'],
             [['section', 'key'], 'string', 'max' => 255],
-            [['type', 'created', 'modified'], 'safe'],
+            [['type', 'created_at', 'updated_at'], 'safe'],
             [['active'], 'boolean'],
         ];
     }
@@ -65,13 +62,19 @@ class Setting extends ActiveRecord implements SettingInterface
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-        Yii::$app->settings->clearCache();
+        $setting = Module::getInstance()->getComponent();
+        if (!is_null($setting)) {
+            $setting->clearCache();
+        }
     }
 
     public function afterDelete()
     {
         parent::afterDelete();
-        Yii::$app->settings->clearCache();
+        $setting = Module::getInstance()->getComponent();
+        if (!is_null($setting)) {
+            $setting->clearCache();
+        }
     }
 
     /**
@@ -86,15 +89,15 @@ class Setting extends ActiveRecord implements SettingInterface
             'key' => Yii::t('setting', 'Key'),
             'value' => Yii::t('setting', 'Value'),
             'active' => Yii::t('setting', 'Active'),
-            'created_at' => Yii::t('setting', 'Created'),
-            'modified_at' => Yii::t('setting', 'Modified'),
+            'created_at' => Yii::t('setting', 'CreatedAt'),
+            'updated_at' => Yii::t('setting', 'UpdatedAt'),
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function getSettings()
+    public function getSetting()
     {
         $settings = static::find()->where(['active' => 1])->asArray()->all();
         return array_merge_recursive(
@@ -171,7 +174,7 @@ class Setting extends ActiveRecord implements SettingInterface
     /**
      * @inheritdoc
      */
-    public function deleteAllSettings()
+    public function deleteAllSetting()
     {
         return static::deleteAll();
     }

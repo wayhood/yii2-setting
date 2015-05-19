@@ -1,21 +1,17 @@
 <?php
 /**
- * @link http://phe.me
- * @copyright Copyright (c) 2014 Pheme
- * @license MIT http://opensource.org/licenses/MIT
+ * @link http://www.wayhood.com/
  */
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use pheme\settings\Module;
 
 /**
  * @var yii\web\View $this
- * @var pheme\settings\models\Setting $model
  */
 
 $this->title = $model->section. '.' . $model->key;
-$this->params['breadcrumbs'][] = ['label' => Module::t('settings', 'Settings'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('setting', 'Setting'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="setting-view">
@@ -23,15 +19,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Module::t('settings', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('setting', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?=
         Html::a(
-            Module::t('settings', 'Delete'),
+            Yii::t('setting', 'Delete'),
             ['delete', 'id' => $model->id],
             [
                 'class' => 'btn btn-danger',
                 'data' => [
-                    'confirm' => Module::t('settings', 'Are you sure you want to delete this item?'),
+                    'confirm' => Yii::t('setting', 'Are you sure you want to delete this item?'),
                     'method' => 'post',
                 ],
             ]
@@ -49,8 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'active:boolean',
                 'key',
                 'value:ntext',
-                'created:datetime',
-                'modified:datetime',
+                'created_at:datetime',
+                'updated_at:datetime',
             ],
         ]
     ) ?>

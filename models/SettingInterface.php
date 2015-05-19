@@ -9,7 +9,7 @@ namespace wh\setting\models;
 
 /**
  * Interface SettingInterface
- * @package pheme\settings\models
+ * @package wh\setting\models
  *
  * @author Aris Karageorgos <aris@phe.me>
  */
@@ -17,10 +17,10 @@ interface SettingInterface
 {
 
     /**
-     * Gets all a combined map of all the settings.
+     * Gets all a combined map of all the setting.
      * @return array
      */
-    public function getSettings();
+    public function getSetting();
 
     /**
      * Saves a setting
@@ -35,7 +35,7 @@ interface SettingInterface
     public function setSetting($section, $key, $value, $type);
 
     /**
-     * Deletes a settings
+     * Deletes a setting
      *
      * @param $key
      * @param $section
@@ -44,10 +44,10 @@ interface SettingInterface
     public function deleteSetting($section, $key);
 
     /**
-     * Deletes all settings! Be careful!
+     * Deletes all setting! Be careful!
      * @return boolean True on success, false on error
      */
-    public function deleteAllSettings();
+    public function deleteAllSetting();
 
     /**
      * Activates a setting

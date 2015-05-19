@@ -9,16 +9,16 @@ use yii\base\Component as BaseComponent;
 use yii\caching\Cache;
 use Yii;
 
-class Settings extends BaseComponent
+class Component extends BaseComponent
 {
     /**
-     * @var string settings model. Make sure your settings model calls clearCache in the afterSave callback
+     * @var string setting model. Make sure your setting model calls clearCache in the afterSave callback
      */
     public $modelClass = 'wh\setting\models\Setting';
 
     /**
-     * Model to for storing and retrieving settings
-     * @var \pheme\settings\models\SettingInterface
+     * Model to for storing and retrieving setting
+     * @var \wh\setting\models\SettingInterface
      */
     protected $model;
 
@@ -28,7 +28,7 @@ class Settings extends BaseComponent
      *
      * After the Settings object is created, if you want to change this property,
      * you should only assign it with a cache object.
-     * Set this property to null if you do not want to cache the settings.
+     * Set this property to null if you do not want to cache the setting.
      */
     public $cache = 'cache';
 
@@ -157,7 +157,7 @@ class Settings extends BaseComponent
      */
     public function deleteAll()
     {
-        return $this->model->deleteAllSettings();
+        return $this->model->deleteAllSetting();
     }
 
     /**
@@ -195,7 +195,7 @@ class Settings extends BaseComponent
     }
 
     /**
-     * Clears the settings cache on demand.
+     * Clears the setting cache on demand.
      * If you haven't configured cache this does nothing.
      *
      * @return boolean True if the cache key was deleted and false otherwise
@@ -225,11 +225,11 @@ class Settings extends BaseComponent
                 $data = $this->cache->get($this->cacheKey);
 
                 if ($data === false) {
-                    $data = $this->model->getSettings();
+                    $data = $this->model->getSetting();
                     $this->cache->set($this->cacheKey, $data);
                 }
             } else {
-                $data = $this->model->getSettings();
+                $data = $this->model->getSetting();
             }
             $this->_data = $data;
         }

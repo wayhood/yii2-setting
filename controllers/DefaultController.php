@@ -44,7 +44,7 @@ class DefaultController extends Controller
         return [
             'toggle' => [
                 'class' => ToggleAction::className(),
-                'modelClass' => 'pheme\settings\models\Setting',
+                'modelClass' => 'wh\setting\models\Setting',
                 //'setFlash' => true,
             ]
         ];

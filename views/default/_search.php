@@ -1,17 +1,13 @@
 <?php
 /**
- * @link http://phe.me
- * @copyright Copyright (c) 2014 Pheme
- * @license MIT http://opensource.org/licenses/MIT
+ * @link http://www.wayhood.com/
  */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use pheme\settings\Module;
 
 /**
  * @var yii\web\View $this
- * @var pheme\settings\models\SettingSearch $model
  * @var yii\widgets\ActiveForm $form
  */
 ?>
@@ -36,8 +32,8 @@ use pheme\settings\Module;
     <?= $form->field($model, 'active')->checkbox() ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Module::t('settings', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Module::t('settings', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('setting', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('setting', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

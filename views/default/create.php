@@ -1,26 +1,22 @@
 <?php
 /**
- * @link http://phe.me
- * @copyright Copyright (c) 2014 Pheme
- * @license MIT http://opensource.org/licenses/MIT
+ * @link http://www.wayhood.com/
  */
 
 use yii\helpers\Html;
-use pheme\settings\Module;
 
 /**
  * @var yii\web\View $this
- * @var pheme\settings\models\Setting $model
  */
 
-$this->title = Module::t(
-    'settings',
+$this->title = Yii::t(
+    'setting',
     'Create {modelClass}',
     [
-        'modelClass' => Module::t('settings', 'Setting'),
+        'modelClass' => Yii::t('setting', 'Setting'),
     ]
 );
-$this->params['breadcrumbs'][] = ['label' => Module::t('settings', 'Settings'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('setting', 'Setting'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="setting-create">

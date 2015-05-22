@@ -6,26 +6,12 @@
 namespace wh\setting;
 
 use Yii;
+use yii\filters\AccessControl;
 
 class Module extends \yii\base\Module
 {
-    /**
-     * @var string The controller namespace to use
-     */
-    public $controllerNamespace = 'wh\setting\controllers';
-
-    public $componentId = 'setting';
-
+    
     public $admins = [];
-
-    public function getComponent()
-    {
-        if (Yii::$app->has($this->componentId)) {
-            return Yii::$app->get($this->componentId);
-        } else {
-            return null;
-        }
-    }
 
     /** @inheritdoc */
     public function behaviors()

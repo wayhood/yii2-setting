@@ -5,11 +5,10 @@
 
 namespace wh\setting;
 
-use yii\base\Component as BaseComponent;
 use yii\caching\Cache;
 use Yii;
 
-class Component extends BaseComponent
+class Component extends \yii\base\Component
 {
     /**
      * @var string setting model. Make sure your setting model calls clearCache in the afterSave callback

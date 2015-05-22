@@ -62,19 +62,13 @@ class Setting extends ActiveRecord implements SettingInterface
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-        $setting = Module::getInstance()->getComponent();
-        if (!is_null($setting)) {
-            $setting->clearCache();
-        }
+        Yii::$app->setting->clearCache();
     }
 
     public function afterDelete()
     {
         parent::afterDelete();
-        $setting = Module::getInstance()->getComponent();
-        if (!is_null($setting)) {
-            $setting->clearCache();
-        }
+        Yii::$app->setting->clearCache();
     }
 
     /**

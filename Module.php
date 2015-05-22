@@ -15,13 +15,8 @@ class Module extends \yii\base\Module
     public $controllerNamespace = 'wh\setting\controllers';
 
     public $componentId = 'setting';
-    /**
-     * Init module
-     */
-    public function init()
-    {
-        parent::init();
-    }
+
+    public $admins = [];
 
     public function getComponent()
     {
@@ -30,5 +25,24 @@ class Module extends \yii\base\Module
         } else {
             return null;
         }
+    }
+
+    /** @inheritdoc */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function () {
+                            return in_array(Yii::$app->user->identity->username, $this->admins);
+                        },
+                    ]
+                ],
+            ],
+        ];
     }
 }
